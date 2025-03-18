@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} About {% endblock %}
+{% block content%}
+<div class="container mt-5">
+        <h2 class="text-center text-success mb-4">Tentang Pengembang</h2>
+        <div class="row justify-content-center">
+            <!-- Pengembang 1 -->
+            <div class="col-md-4">
+                <div class="card text-center shadow-lg">
+                    <img src="img/dev1.jpg" class="card-img-top dev-img" alt="Pengembang 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Ahmad Santoso</h5>
+                        <p class="card-text">Frontend Developer | Spesialis UI/UX</p>
+                        <p class="card-text">Mengembangkan antarmuka yang responsif dan menarik dengan React.js.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pengembang 2 -->
+            <div class="col-md-4">
+                <div class="card text-center shadow-lg">
+                    <img src="img/dev2.jpg" class="card-img-top dev-img" alt="Pengembang 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Siti Rahma</h5>
+                        <p class="card-text">Backend Developer | Spesialis Database</p>
+                        <p class="card-text">Bertanggung jawab atas logika server dan pengelolaan database dengan Node.js dan PostgreSQL.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pengembang 3 -->
+            <div class="col-md-4">
+                <div class="card text-center shadow-lg">
+                    <img src="img/dev3.jpg" class="card-img-top dev-img" alt="Pengembang 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Budi Pratama</h5>
+                        <p class="card-text">Full Stack Developer</p>
+                        <p class="card-text">Mengembangkan fitur secara menyeluruh, dari frontend hingga backend.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -56,3 +56,10 @@ body {
     height: 300px !important;
     max-width: 100%;
 }
+
+.dev-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
