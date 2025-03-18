@@ -1,0 +1,42 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.sensor-card {
+    background: linear-gradient(135deg, #56ab2f, #a8e063);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sensor-info {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Ukuran logo lebih responsif */
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+/* Navbar pada layar kecil */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 16px; /* Ukuran font lebih kecil di mobile */
+    }
+
+    .logo {
+        height: 35px; /* Ukuran logo disesuaikan */
+    }
+
+    .navbar-nav {
+        text-align: center; /* Menu lebih terpusat */
+    }
+
+    .nav-item {
+        margin-bottom: 5px; /* Memberi sedikit jarak antar item */
+    }
+}
