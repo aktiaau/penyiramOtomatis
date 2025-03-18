@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %} About {% endblock %}
+{% block content%}
+    <div class="container mt-5">
+    <h2 class="text-center mb-4">Sistem Penyiram Tanaman Otomatis</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sensor 1</h5>
+                    <form class="d-flex mb-3">
+                        <button type="submit" class="btn btn-warning me-2">Xerofit</button>
+                        <button type="submit" class="btn btn-info me-2">Mesofit</button>
+                        <button type="submit" class="btn btn-success">Hidrofit</button>
+                    </form>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center">Nilai Kelembaban</div>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center" style="--mdb-bg-opacity: 0.7;">Status Pompa Air</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sensor 2</h5>
+                    <form class="d-flex mb-3">
+                        <button type="submit" class="btn btn-warning me-2">Xerofit</button>
+                        <button type="submit" class="btn btn-info me-2">Mesofit</button>
+                        <button type="submit" class="btn btn-success">Hidrofit</button>
+                    </form>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center">Nilai Kelembaban</div>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center" style="--mdb-bg-opacity: 0.7;">Status Pompa Air</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sensor 3</h5>
+                    <form class="d-flex mb-3">
+                        <button type="submit" class="btn btn-warning me-2">Xerofit</button>
+                        <button type="submit" class="btn btn-info me-2">Mesofit</button>
+                        <button type="submit" class="btn btn-success">Hidrofit</button>
+                    </form>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center">Nilai Kelembaban</div>
+                    <div class="p-3 mb-2 bg-primary bg-gradient text-white rounded shadow text-center" style="--mdb-bg-opacity: 0.7;">Status Pompa Air</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+      <div class="col-md-6">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="text-center text-primary mb-3">Informasi Kategori Tanaman</h4>
+
+            <!-- Card dalam card utama -->
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Xerofit</h5>
+                    <p class="card-text">Tanaman ini mampu bertahan hidup di lingkungan dengan ketersediaan air yang sangat terbatas. Contoh: kaktus, semak-semak gurun.</p>
+                </div>
+            </div>
+
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Mesofit</h5>
+                    <p class="card-text">Tanaman ini memiliki kebutuhan air yang sedang dan dapat tumbuh di lingkungan dengan ketersediaan air yang cukup. Contoh: pohon-pohon di hutan, rumput, sebagian besar tanaman hias.</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Hidrofit</h5>
+                    <p class="card-text">Tanaman ini hidup di lingkungan air atau daerah yang sangat lembap. Contoh: teratai, eceng gondok, pandan air. </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <!-- Card 2 -->
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h4 class="text-center text-success mb-4">Grafik Kelembaban 2</h4>
+                    <canvas id="humidityChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        // Ambil elemen canvas
+        var ctx = document.getElementById('humidityChart').getContext('2d');
+
+        // Data awal
+        var dataLabels = [];
+        var dataHumidity = [];
+
+        // Buat chart
+        var humidityChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dataLabels,
+                datasets: [{
+                    label: 'Kelembaban (%)',
+                    data: dataHumidity,
+                    borderColor: 'green',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                    pointRadius: 5,
+                    pointBackgroundColor: 'green'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Waktu' }
+                    },
+                    y: {
+                        min: 0,
+                        max: 100,
+                        title: { display: true, text: 'Kelembaban (%)' }
+                    }
+                }
+            }
+        });
+
+        // Fungsi untuk menambahkan data baru
+        function updateChart() {
+            var now = new Date().toLocaleTimeString(); // Waktu saat ini
+            var humidityValue = Math.floor(Math.random() * (90 - 50 + 1)) + 50; // Nilai acak 50-90%
+
+            // Tambahkan data ke array
+            dataLabels.push(now);
+            dataHumidity.push(humidityValue);
+
+            // Batasi jumlah data yang ditampilkan (misalnya hanya 10 titik terakhir)
+            if (dataLabels.length > 10) {
+                dataLabels.shift();
+                dataHumidity.shift();
+            }
+
+            // Perbarui chart
+            humidityChart.update();
+        }
+
+        // Perbarui data setiap 3 detik
+        setInterval(updateChart, 3000);
+    </script>
+
+    <!-- Bootstrap MDB JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+{% endblock %}

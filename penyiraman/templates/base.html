@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kekayu</title>
+
+    <!-- MDB Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../static/istockphoto-1453256941-1024x1024.jpg"
+        class="me-2"
+        height="70"
+        alt="MDB Logo"
+        loading="lazy"
+      />
+      <small>Nama Brand</small>
+    </a>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+
+<!-- Footer -->
+<footer class="bg-body-tertiary text-center">
+  <div class="container p-4 pb-0">
+    <section class="mb-4">
+      <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="#" role="button">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="#" role="button">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;" href="#" role="button">
+        <i class="fab fa-google"></i>
+      </a>
+      <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="#" role="button">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2025 Copyright:
+    <a class="text-body" href="https://mdbootstrap.com/">kekayu.com</a>
+  </div>
+</footer>
+
+<!-- Bootstrap & MDB JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        let sidebar = document.getElementById('sidebarMenu');
+        sidebar.style.transform = sidebar.style.transform === 'translateX(0%)' ? 'translateX(-100%)' : 'translateX(0%)';
+    });
+</script>
+
+</body>
+</html>
