@@ -1,8 +1,47 @@
-{% extends "base.html" %}
-{% block title %} About {% endblock %}
-{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Kelembaban</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+    <div class="container">
+        <!-- Logo dan Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="../static/istockphoto-1453256941-1024x1024.jpg" alt="Logo" height="40" class="logo me-2">
+            <i class="fas fa-seedling me-2"></i> Smart Irrigation
+        </a>
 
+        <!-- Tombol Toggle untuk Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="developer">Developer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="login">Login Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div class="container mt-5">
     <h2 class="text-center text-success mb-4">Sistem Penyiram Tanaman Otomatis</h2>
@@ -104,4 +143,7 @@
 </div>
 
 
-{% endblock %}
+<script src="../static/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+</body>
+</html>
