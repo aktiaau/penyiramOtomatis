@@ -1,56 +1,105 @@
-from flask import Flask, flash, session, render_template, request, redirect, url_for, request
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, flash, session, render_template, request, redirect, url_for
+import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app=Flask(__name__) #membuat class atau object
-app.secret_key='your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///users.db'
-db = SQLAlchemy(app)
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Pastikan ini rahasia
+DATABASE = 'users.db'
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
 
+# Fungsi koneksi database
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row  # Mengembalikan hasil dalam bentuk dictionary
+    return conn
+
+
+# Fungsi untuk membuat tabel jika belum ada
+def create_table():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+# Fungsi tambah user
+#def add_user(username, password):
+#    hashed_password = generate_password_hash(password)
+#    conn = sqlite3.connect(DATABASE)
+#    cursor = conn.cursor()
+#    cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
+#    conn.commit()
+#    conn.close()
+#    print(f"User {username} berhasil ditambahkan!")
+
+# Tambah user baru (ganti username dan password sesuai keinginan)
+#add_user("upskill", "upskill")
+
+# Route index
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/developer')
-def developer():
-    return render_template('developer.html')
+    return redirect(url_for('login'))
 
 
+# Route login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = User.query.filter_by(username=username).first()
 
-        if user and check_password_hash(user.password, password):
-            session['username'] = username
-            flash('Login successful!', 'success')
-            return redirect(url_for('dashboard'))
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+        user = cursor.fetchone()
+        conn.close()
+
+        # Debugging
+        print("==== DEBUG LOGIN ====")
+        if user:
+            print(f"User ditemukan: {user['username']}")
+            print(f"Password Hash di DB: {user['password']}")
+
+            if check_password_hash(user['password'], password):
+                session['username'] = username
+                print(f"Login sukses! Session disimpan: {session['username']}")
+                flash('Login successful!', 'success')
+                return redirect(url_for('dashboard'))
+            else:
+                print("Password salah!")
+                flash('Password salah!', 'danger')
         else:
-            flash('Invalid username or password', 'danger')
+            print("Username tidak ditemukan!")
+            flash('Username tidak ditemukan!', 'danger')
 
     return render_template('login.html')
 
+
+# Route dashboard
 @app.route('/dashboard')
 def dashboard():
     if 'username' in session:
+        print(f"User {session['username']} berhasil masuk ke dashboard")  # Debugging
         return render_template('dashboard.html', username=session['username'])
-    return redirect(url_for('login'))
-    #return render_template('dashboard.html')
 
+    flash('Silakan login terlebih dahulu.', 'warning')
+    return redirect(url_for('login'))
+
+
+# Route logout
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash('You have been logged out.', 'info')
+    flash('Anda telah logout.', 'info')
     return redirect(url_for('login'))
 
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    create_table()  # Buat tabel saat pertama kali dijalankan
     app.run(debug=True)
