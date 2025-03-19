@@ -10,5 +10,13 @@ def index():
 def developer():
     return render_template('developer.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/submitLogin')
+def submitLogin():
+    return render_template('dashboard.html')
+
 if __name__=='__main__':#menjalankan program
     app.run(debug=True)

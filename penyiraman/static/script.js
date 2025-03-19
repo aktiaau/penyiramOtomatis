@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     label: 'Sensor 1',
                     data: [],
                     borderColor: 'green',
-                    borderWidth: 2,
+                    borderWidth: 1,
                     fill: false,
                     pointRadius: 4
                 },
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     label: 'Sensor 2',
                     data: [],
                     borderColor: 'blue',
-                    borderWidth: 2,
+                    borderWidth: 1,
                     fill: false,
                     pointRadius: 4
                 },
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     label: 'Sensor 3',
                     data: [],
                     borderColor: 'red',
-                    borderWidth: 2,
+                    borderWidth: 1,
                     fill: false,
                     pointRadius: 4
                 }
@@ -76,3 +76,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateChart, 3000);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+            const sensorSwitch = document.getElementById("sensorSwitch");
+
+            sensorSwitch.addEventListener("change", function() {
+                if (sensorSwitch.checked) {
+                    sensorSwitch.style.backgroundColor = "white";
+                    sensorSwitch.style.borderColor = "white";
+                } else {
+                    sensorSwitch.style.backgroundColor = "red";
+                    sensorSwitch.style.borderColor = "red";
+                }
+            });
+        });
