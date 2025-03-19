@@ -92,7 +92,7 @@ def dashboard():
     return redirect(url_for('login'))
 
 
-# Route logout
+# Route logout.
 @app.route('/logout')
 def logout():
     session.pop('username', None)
