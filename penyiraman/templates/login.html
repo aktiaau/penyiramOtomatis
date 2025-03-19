@@ -12,96 +12,27 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center text-white">Dashboard Admin - Manajemen Tanaman</h2>
-        <div class="card card-custom p-4 mt-4">
-            <h4 class="text-center mb-4">Kelola Data Tanaman</h4>
-            <button class="btn btn-custom text-white mb-3" data-bs-toggle="modal" data-bs-target="#addPlantModal">Tambah Tanaman</button>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kaktus</td>
-                        <td>Xerofit</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</button>
-                            <button class="btn btn-danger btn-sm">Hapus</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Padi</td>
-                        <td>Mesofit</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</button>
-                            <button class="btn btn-danger btn-sm">Hapus</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Modal Tambah Tanaman -->
-    <div class="modal fade" id="addPlantModal" tabindex="-1" aria-labelledby="addPlantModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addPlantModalLabel">Tambah Tanaman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="plantName" class="form-label">Nama Tanaman</label>
-                            <input type="text" class="form-control" id="plantName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="plantCategory" class="form-label">Kategori</label>
-                            <select class="form-select" id="plantCategory" required>
-                                <option value="Xerofit">Xerofit</option>
-                                <option value="Mesofit">Mesofit</option>
-                                <option value="Hidrofit">Hidrofit</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-custom text-white">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Edit Tanaman -->
-    <div class="modal fade" id="editPlantModal" tabindex="-1" aria-labelledby="editPlantModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editPlantModalLabel">Edit Tanaman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="editPlantName" class="form-label">Nama Tanaman</label>
-                            <input type="text" class="form-control" id="editPlantName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editPlantCategory" class="form-label">Kategori</label>
-                            <select class="form-select" id="editPlantCategory" required>
-                                <option value="Xerofit">Xerofit</option>
-                                <option value="Mesofit">Mesofit</option>
-                                <option value="Hidrofit">Hidrofit</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-custom text-white">Simpan Perubahan</button>
-                    </form>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-custom shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">
+                            <i class="fa-solid fa-leaf text-success"></i> Login Form
+                        </h3>
+                        <form action="login" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label fw-bold">Username</label>
+                                <input type="text" class="form-control rounded-3" id="username" name="username" placeholder="Masukkan username Anda">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label fw-bold">Password</label>
+                                <input type="password" class="form-control rounded-3" id="password" name="password" placeholder="Masukkan password Anda">
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100 rounded-3 text-white">
+                                <i class="fa-solid fa-paper-plane"></i> Login
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
