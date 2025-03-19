@@ -28,18 +28,17 @@ def create_table():
     conn.commit()
     conn.close()
 
-# Fungsi tambah user
-#def add_user(username, password):
-#    hashed_password = generate_password_hash(password)
-#    conn = sqlite3.connect(DATABASE)
-#    cursor = conn.cursor()
-#    cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
-#    conn.commit()
-#    conn.close()
-#    print(f"User {username} berhasil ditambahkan!")
+def add_user(username, password):
+    hashed_password = generate_password_hash(password)
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+    cursor.execute('INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)',
+                   (username, hashed_password))
+    conn.commit()
+    conn.close()
 
 # Tambah user baru (ganti username dan password sesuai keinginan)
-#add_user("upskill", "upskill")
+add_user("vedc", "vedc")
 
 # Route index
 @app.route('/')
@@ -92,7 +91,7 @@ def dashboard():
     return redirect(url_for('login'))
 
 
-# Route logout.
+# Route logout
 @app.route('/logout')
 def logout():
     session.pop('username', None)
