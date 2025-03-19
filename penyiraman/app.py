@@ -98,6 +98,13 @@ def logout():
     flash('Anda telah logout.', 'info')
     return redirect(url_for('login'))
 
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
+@app.route('/developer')
+def developer():
+    return render_template('developer.html')
 
 if __name__ == '__main__':
     create_table()  # Buat tabel saat pertama kali dijalankan

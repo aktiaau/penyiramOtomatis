@@ -90,3 +90,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         });
+
+ function toggleSensor(buttonId, statusId) {
+            var sensorButton = document.getElementById(buttonId);
+            var statusText = document.getElementById(statusId);
+            if (sensorButton.innerText === "ON") {
+                sensorButton.innerText = "OFF";
+                sensorButton.classList.remove("active");
+                sensorButton.classList.add("inactive");
+                statusText.innerText = "Tidak Aktif";
+                statusText.classList.remove("active");
+                statusText.classList.add("inactive");
+            } else {
+                sensorButton.innerText = "ON";
+                sensorButton.classList.remove("inactive");
+                sensorButton.classList.add("active");
+                statusText.innerText = "Aktif";
+                statusText.classList.remove("inactive");
+                statusText.classList.add("active");
+            }
+        }

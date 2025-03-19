@@ -65,18 +65,44 @@ body {
 }
 
  .card-custom {
-            background: linear-gradient(to bottom, #4CAF50, #A8E063);
-            color: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
             padding: 15px;
-            text-align: center;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
+            font-size: 0.85rem;
         }
- .header-card {
-            background: linear-gradient(to bottom, #2E7D32, #66BB6A);
+        .header-card {
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        .status-text.active {
+            color: green;
             font-weight: bold;
         }
+        .status-text.inactive {
+            color: red;
+            font-weight: bold;
+        }
+        .toggle-btn {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            transition: background 0.3s;
+        }
+        .toggle-btn.active {
+            background: green;
+        }
+        .toggle-btn.inactive {
+            background: red;
+        }
+
   .kategori-tanaman p {
     font-size: 0.75rem;
 }
